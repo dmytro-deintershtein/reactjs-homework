@@ -15,7 +15,7 @@ function App() {
   return (
     <div className="App">
       <CreateElement/>
-      <ComponentElement/>
+      <ComponentElement phrase="Hello World from Component Element Props!"/>
       <PureComponentElement/>
       <FunctionalComponentElement/>
     </div>
