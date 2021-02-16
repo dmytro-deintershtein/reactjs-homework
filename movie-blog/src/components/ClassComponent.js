@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-class componentElement extends Component {
+class ComponentElement extends Component {
   render() {
     return (
       <h1 className="component-based">
@@ -10,4 +10,4 @@ class componentElement extends Component {
   }
 }
 
-export default componentElement
+export default ComponentElement

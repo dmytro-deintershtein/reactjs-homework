@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
-class pureComponentElement extends React.PureComponent {
+class PureComponentElement extends React.PureComponent {
   render() {
     return (
       <h1 className="component-based">
-        Hello World by Pure Component
+        {this.props.phrase}
       </h1>
     )
   }
 }
 
-export default pureComponentElement
+export default PureComponentElement
