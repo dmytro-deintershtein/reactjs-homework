@@ -5,8 +5,8 @@
   "main": "src/index.js",
   "scripts": {
     "test": "jest",
-    "start": "webpack serve --mode development --open --hot",
-    "build": "webpack --mode production"
+    "DEV": "webpack serve --mode development --open --hot",
+    "PROD": "webpack --mode production"
   },
   "author": "",
   "license": "ISC",

@@ -1,14 +1,14 @@
-Start local webpack server with babel watcher:
+Start local dev server with babel watcher:
 ```
-npm start
+npm run DEV
 ```
 
 Build minified production artifact:
 ```
-npm build
+npm run PROD
 ```
 
 Run tests with Jest:
 ```
-npm test
+npm run test
 ```
