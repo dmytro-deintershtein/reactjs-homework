@@ -11,7 +11,7 @@ function GreetingsComponent() {
       <CreateElement phrase="Hello world by React.createElement"/>
       <ComponentElement phrase="Hello world by Class Component"/>
       <PureComponentElement phrase="Hello world by Functional Component"/>
-      <FunctionalComponentElement phrase="Hello world by functional component"/>
+      <FunctionalComponentElement/>
     </React.Fragment>
   );
 }
