@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import './styles/default.css';
 import GreetingsComponent from './components/GreetingsComponent'
 
 function App() {
