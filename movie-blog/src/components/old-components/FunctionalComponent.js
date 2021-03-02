@@ -1,8 +1,10 @@
 import React from 'react';
 
 function FunctionalComponent(props) {
+  let phrase = props.phrase || "Hello there!";
+
   return (
-    <h1>{props.phrase}</h1>
+    <h1 id="functional-component">{phrase}</h1>
   );
 }
 
