@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
-import './styles/default.css';
-import GreetingsComponent from './components/GreetingsComponent'
+import './styles/main.less';
+import Root from "./components/Root";
 
 function App() {
   return (
     <div className="App">
-      <GreetingsComponent/>
+      <Root/>
     </div>
   );
 }

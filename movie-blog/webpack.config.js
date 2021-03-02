@@ -11,7 +11,6 @@ const configDirs = {
 }
 
 function buildConfig(env) {
-  console.log(env);
   if (env.APP_ENV === 'prod' || env.APP_ENV === 'dev') {
     return require('./config/' + env.APP_ENV + '.js')(configDirs);
   } else {
