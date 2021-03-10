@@ -1,25 +1,23 @@
 import React, {Component} from 'react';
 
-import Container from "../../elements/Container";
-import Label from "../../elements/Label";
 import Button from "../../elements/Button";
 import Search from "../contained/Search";
-import ErrorBoundary from "../ErrorBoundary";
+import Logo from "../contained/Logo";
 
-class Header extends Component {
-  render() {
-    return (
-      <Container className={'container__full-width header'}>
-        <Container className={'content__contained add-movie'}>
-          <Label className={'title'} text={'netflixroulette'}/>
-          <Button className={'button'} text={'+ ADD MOVIE'}/>
-        </Container>
-        <ErrorBoundary>
-          <Search/>
-        </ErrorBoundary>
-      </Container>
-    )
-  }
+const Header = () => {
+  return (
+    <div className={'container__full-width header'}>
+      <div className={'content__contained add-movie'}>
+        <Logo/>
+        <Button
+          className={'button'}
+          text={'+ ADD MOVIE'}
+          onClick={'Movie'}
+        />
+      </div>
+      <Search/>
+    </div>
+  )
 }
 
 export default Header

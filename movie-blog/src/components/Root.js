@@ -2,17 +2,18 @@ import React, {Component} from 'react';
 import Header from "./components/root/Header";
 import Body from "./components/root/Body";
 import Footer from "./components/root/Footer";
+import ErrorBoundary from "./components/ErrorBoundary";
 
-class Root extends Component {
-  render() {
-    return (
-      <React.Fragment>
+const Root = () => {
+  return (
+    <>
+      <ErrorBoundary>
         <Header/>
         <Body/>
         <Footer/>
-      </React.Fragment>
-    )
-  }
+      </ErrorBoundary>
+    </>
+  )
 }
 
 export default Root

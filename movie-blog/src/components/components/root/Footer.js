@@ -1,16 +1,13 @@
-import Container from "../../elements/Container";
-import Label from "../../elements/Label";
-
 import React, {Component} from 'react';
 
-class Footer extends Component {
-  render() {
-    return (
-      <Container className={'container__full-width footer'}>
-        <Label text={'netflixroulette'}/>
-      </Container>
-    )
-  }
+import Label from "../../elements/Label";
+
+const Footer = () => {
+  return (
+    <div className={'container__full-width footer'}>
+      <Label text={'netflixroulette'}/>
+    </div>
+  )
 }
 
 export default Footer

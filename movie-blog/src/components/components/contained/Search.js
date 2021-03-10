@@ -1,22 +1,34 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
-import Container from "../../elements/Container";
 import Label from "../../elements/Label";
 import Input from "../../elements/Input";
 import Button from "../../elements/Button";
 
-class Search extends Component {
-  render() {
-    return (
-      //todo: default input field value!
-      <Container className={'content__contained search-field'}>
-        <Label className={'label'} text={'FIND YOUR MOVIE'}/>
-        <Input className={'field'} placeholder={this.props.defaultPlaceholderText}/>
-        <Button className={'button'} text={'Search'}/>
-      </Container>
-    )
-  }
+const Search = (props) => {
+  let searchId = 'search-field';
+
+  return (
+    //todo: default input field value!
+    <div className={'content__contained search-field'}>
+      <Label
+        for={searchId}
+        className={'label'}
+        text={'FIND YOUR MOVIE'}
+      />
+      <Input
+        id={searchId}
+        className={'field'}
+        value={''}
+        placeholder={props.defaultPlaceholderText}
+      />
+      <Button
+        className={'button'}
+        onClick={''}
+        text={'Search'}
+      />
+    </div>
+  )
 }
 
 Search.propTypes = {
