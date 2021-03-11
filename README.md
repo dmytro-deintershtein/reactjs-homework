@@ -1,11 +1,11 @@
 Start local dev server with babel watcher:
 ```
-npm run DEV
+npm run build:dev
 ```
 
 Build minified production artifact:
 ```
-npm run PROD
+npm run build:prod
 ```
 
 Run tests with Jest:
