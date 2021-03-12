@@ -10,6 +10,9 @@ function buildConfig(configDirs) {
       path: configDirs.BUILD_DIR,
       filename: "index_bundle.js"
     },
+    devServer: {
+      port: 9000
+    },
     module: {
       rules: [
         {
