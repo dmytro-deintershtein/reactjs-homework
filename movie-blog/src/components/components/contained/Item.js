@@ -1,11 +1,28 @@
-import React from 'react';
-import Button from "../../elements/Button";
+import React, { useState, useRef } from 'react';
+import ClickOutside from "../../actions/ClickOutside";
 
 const Item = ({title, genre, year, poster}) => {
-  return (
-    <div className={'item'}>
+
+  const [show, setShow] = useState(true);
+  const [showMenu, setShowMenu] = useState(false);
+  const ref = useRef();
+
+  ClickOutside(ref, () => {
+    setShowMenu(false);
+  });
+
+  return !!show && (
+    <div className={'item'} ref={ref}>
       <div className={'item__cover'} style={{ backgroundImage: `url(${poster})`}}>
-        <Button text={'item__menu'}/>
+        <button className={'item__menu'} onClick={() => setShowMenu(true)}>
+          Show menu
+        </button>
+        {showMenu &&
+        <ul className={'item__menu-dropdown'}>
+          <li>? Edit ?</li>
+          <li onClick={() => setShow(false)}>Delete</li>
+        </ul>
+        }
       </div>
       <div className={'item__description'}>
         <h3 className={'item__name'}>{title}</h3>

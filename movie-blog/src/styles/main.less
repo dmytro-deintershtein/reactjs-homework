@@ -136,6 +136,7 @@ body {
                     display: flex;
                     min-height: 25rem;
                     background-size: cover;
+                    position: relative;
 
                     > button {
                         margin: 1rem 1rem auto auto;
@@ -145,6 +146,19 @@ body {
                         border-radius: 2rem;
                         border: none;
                         background-color: @color-grey-dark;
+                    }
+
+                    .item__menu-dropdown {
+                        position: absolute;
+                        top: 2rem;
+                        right: 0;
+                        padding: 5px;
+                        font-size: 1rem;
+                        line-height: 2rem;
+                        border-radius: .3rem;
+                        background: @color-grey-dark;
+                        border: 1px solid @color-grey-light;
+                        list-style: none;
                     }
                 }
 
