@@ -1,53 +1,73 @@
-import React, {Component, useState, useEffect} from 'react';
-import Label from "../../elements/Label";
+import React, {useEffect} from 'react';
 import Item from "./Item";
 
-const Catalog = () => {
-  const [error, setError] = useState(null);
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [items, setItems] = useState([]);
+const Catalog = (props) => {
+  // TODO: think how to count items without re-render
+  useEffect(() => {
+    let target = document.getElementById('catalog');
 
-  const apiBaseURL = 'https://imdb-internet-movie-database-unofficial.p.rapidapi.com/film/',
-    headers = {
-      "method": "GET",
-      "headers": {
-        "x-rapidapi-key": "647a93cc65msh50494ccaf2a1f63p19a4dajsnd4639551f841",
-        "x-rapidapi-host": "imdb-internet-movie-database-unofficial.p.rapidapi.com"
+    const config = {
+      childList: true,
+      subtree: true
+    };
+
+    const callback = function(mutationsList, observer) {
+      for (let mutation of mutationsList) {
+        if (mutation.type === 'childList') {
+          let number = target.childElementCount;
+          document.getElementById('items-found').innerText = number + ' items found';
+        }
       }
     };
 
-  const movies = [
-    {slug: "knocking on heaven's door", genre: ['drama', 'criminal']},
-    {slug: "interstellar", genre: ['sci-fi', 'drama']},
-    {slug: "city lights", genre: ['comedy']},
-    {slug: "matrix", genre: ['sci-fi', 'action']},
-    {slug: "Amelie", genre: ['comedy']},
-    {slug: "Showshank redemption", genre: ['drama', 'criminal']}
-  ]
+    const observer = new MutationObserver(callback);
+    observer.observe(target, config);
+  })
 
-  movies.map(({slug, genre}) => (
-    useEffect(() => {
-      fetch(apiBaseURL + encodeURI(slug), headers)
-        .then(res => res.json())
-        .then((res) => {
-            res.genre = genre;
-            setItems(items => [...items, res]);
-          },
-          (error) => {
-            setIsLoaded(true);
-            setError(error);
-          }
-        )
-    }, [])
-  ));
+  const sort = (prop, array) => {
+    array.sort((a, b) => {
+      if(a[prop] < b[prop]) { return -1; }
+      if(a[prop] > b[prop]) { return 1; }
+      return 0;
+    })
+  }
+
+  const reverse = (prop, array) => {
+    array.sort((a, b) => {
+      if(a[prop] > b[prop]) { return -1; }
+      if(a[prop] < b[prop]) { return 1; }
+      return 0;
+    })
+  }
+
+  switch (props.sortType) {
+    case 'title-az':
+      sort('title', props.items);
+      break;
+    case 'title-za':
+      reverse('title', props.items);
+      break;
+    case 'year-newer':
+      reverse('year', props.items);
+      break;
+    case 'year-older':
+      sort('year', props.items);
+      break;
+    default:
+      sort('title', props.items);
+      break;
+  }
 
   return (
     <div className={'content__contained catalog'}>
-      <Label className={'results-found'} text={'39 movies found'}/>
-      <div className={'item-listing'}>
+      <div className={'results-found'}>
+        <p id={'items-found'}></p>
+      </div>
+      <div id={'catalog'} className={'item-listing'}>
         {
-          items.map((item, index) => {
-            return (
+          props.items.map((item, index) => {
+            if (item.genre.includes(props.genreName) || props.genreName === 'all') {
+              return (
                 <Item
                   key={index}
                   poster={item.poster}
@@ -57,6 +77,7 @@ const Catalog = () => {
                   genre={item.genre}
                 />
               )
+            }
           })
         }
       </div>

@@ -27,8 +27,8 @@ const Item = ({title, genre, year, poster}) => {
       <div className={'item__description'}>
         <h3 className={'item__name'}>{title}</h3>
         <p className={'item__category'}>
-          {genre.map((name, index) => (
-              <span key={index}>{name} </span>
+          {genre.map((genre, index) => (
+              <span key={index}>{genre} </span>
           ))}
         </p>
         <span className={'item__year'}>{year}</span>
